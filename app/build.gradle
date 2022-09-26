@@ -57,7 +57,7 @@ android {
 }
 
 def playServicesVersion = '15.0.0'
-def firebaseVersion = '15.0.0'
+def firebaseVersion = '16.0.0'
 def supportLibraryVersion = '27.1.1'
 
 dependencies {
@@ -78,9 +78,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation "com.google.firebase:firebase-core:$firebaseVersion"
     implementation "com.google.firebase:firebase-crash:$firebaseVersion"
-    implementation "com.google.firebase:firebase-auth:$firebaseVersion"
-    implementation "com.google.firebase:firebase-ads:$firebaseVersion"
-    implementation "com.google.firebase:firebase-database:$firebaseVersion"
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.2'
 }
 

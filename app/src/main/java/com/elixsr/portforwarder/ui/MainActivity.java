@@ -50,6 +50,7 @@ import com.elixsr.portforwarder.models.RuleModel;
 import com.elixsr.portforwarder.adapters.RuleListAdapter;
 import com.elixsr.portforwarder.ui.intro.MainIntro;
 import com.elixsr.portforwarder.ui.preferences.HelpActivity;
+import com.elixsr.portforwarder.ui.preferences.NetworkActivity;
 import com.elixsr.portforwarder.ui.preferences.SettingsActivity;
 import com.elixsr.portforwarder.ui.rules.NewRuleActivity;
 import com.google.android.gms.analytics.Tracker;
@@ -239,6 +240,10 @@ public class MainActivity extends BaseActivity {
             case R.id.action_help:
                 Intent helpActivityIntent = new Intent(this, HelpActivity.class);
                 startActivity(helpActivityIntent);
+                break;
+            case R.id.action_network:
+                Intent networkActivityIntent = new Intent(this, NetworkActivity.class);
+                startActivity(networkActivityIntent);
                 break;
         }
 

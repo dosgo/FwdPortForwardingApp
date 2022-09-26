@@ -269,10 +269,12 @@ public class ForwardingService extends IntentService {
     }
 
     private InetSocketAddress generateFromIpUsingInterface(String interfaceName, int port) throws SocketException, ObjectNotFoundException {
-
         String address = null;
         InetSocketAddress inetSocketAddress;
-
+        if(interfaceName.equals("INADDR_ANY")){
+            inetSocketAddress = new InetSocketAddress("0.0.0.0", port);
+            return inetSocketAddress;
+        }
         for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
             NetworkInterface intf = en.nextElement();
 
