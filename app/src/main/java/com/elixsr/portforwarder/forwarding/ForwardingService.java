@@ -412,5 +412,6 @@ public class ForwardingService extends IntentService {
 
         // mId allows you to update the notification later on.
         mNotificationManager.notify(NOTIFICATION_ID, notification);
+        startForeground(NOTIFICATION_ID,notification);
     }
 }
