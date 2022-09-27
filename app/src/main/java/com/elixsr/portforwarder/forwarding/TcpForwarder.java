@@ -79,30 +79,34 @@ public class TcpForwarder extends Forwarder implements Callable<Void> {
                     break;
                 }
 
-                int count = selector.select();
-                if (count > 0) {
-                    Iterator<SelectionKey> it = selector.selectedKeys().iterator();
-                    while (it.hasNext()) {
+                try {
+                    int count = selector.select();
+                    if (count > 0) {
+                        Iterator<SelectionKey> it = selector.selectedKeys().iterator();
+                        while (it.hasNext()) {
 
-                        SelectionKey key = it.next();
-                        it.remove();
+                            SelectionKey key = it.next();
+                            it.remove();
 
-                        if (key.isValid() && key.isAcceptable()) {
-                            processAcceptable(key, to);
-                        }
+                            if (key.isValid() && key.isAcceptable()) {
+                                processAcceptable(key, to);
+                            }
 
-                        if (key.isValid() && key.isConnectable()) {
-                            processConnectable(key);
-                        }
+                            if (key.isValid() && key.isConnectable()) {
+                                processConnectable(key);
+                            }
 
-                        if (key.isValid() && key.isReadable()) {
-                            processReadable(key, readBuffer);
-                        }
+                            if (key.isValid() && key.isReadable()) {
+                                processReadable(key, readBuffer);
+                            }
 
-                        if (key.isValid() && key.isWritable()) {
-                            processWritable(key);
+                            if (key.isValid() && key.isWritable()) {
+                                processWritable(key);
+                            }
                         }
                     }
+                }catch (Exception e) {
+                    Log.e(TAG, "Problem opening Selector", e);
                 }
             }
         } catch (IOException e) {
